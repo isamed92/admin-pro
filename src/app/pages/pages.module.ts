@@ -6,6 +6,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { PAGES_ROUTES } from './pages.routes';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { PAGES_ROUTES } from './pages.routes';
     imports: [ 
         CommonModule,
         SharedModule,
-        PAGES_ROUTES
+        PAGES_ROUTES,
+        FormsModule
      ],
     exports: [
         DashboardComponent,
