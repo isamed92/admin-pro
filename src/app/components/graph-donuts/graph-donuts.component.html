@@ -1,0 +1,12 @@
+<h4 class="card-title">{{tituloChart}}</h4>
+
+<!-- GRAFICO -->
+<div style="display: block">
+  <canvas
+    baseChart
+    [data]="doughnutChartData"
+    [labels]="doughnutChartLabels"
+    [chartType]="doughnutChartType"
+  >
+  </canvas>
+</div>
