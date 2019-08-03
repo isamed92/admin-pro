@@ -11,6 +11,7 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
 
 import { ChartsModule } from 'ng2-charts';
 import { GraphDonutsComponent } from '../components/graph-donuts/graph-donuts.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { GraphDonutsComponent } from '../components/graph-donuts/graph-donuts.co
         //Temp
         IncrementadorComponent,
 
-        GraphDonutsComponent
+        GraphDonutsComponent,
+
+        AccountSettingsComponent
     ],
     imports: [ 
         CommonModule,
