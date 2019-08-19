@@ -7,7 +7,8 @@ import { RegisterComponent } from './login/register.component';
 import { PagesModule } from './pages/pages.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { SettingsService } from './services/settings.service';
+
+import { ServiceModule } from './services/service.module';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,13 @@ import { SettingsService } from './services/settings.service';
     BrowserModule,
     PagesModule,
     AppRoutingModule,
+    ServiceModule,
 
     //Temp
     FormsModule
     
   ],
-  providers: [SettingsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
