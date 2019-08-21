@@ -13,6 +13,7 @@ import { ChartsModule } from 'ng2-charts';
 import { GraphDonutsComponent } from '../components/graph-donuts/graph-donuts.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import { PromesasComponent } from './promesas/promesas.component';
 
         AccountSettingsComponent,
 
-        PromesasComponent
+        PromesasComponent,
+
+        RxjsComponent
     ],
     imports: [ 
         CommonModule,
