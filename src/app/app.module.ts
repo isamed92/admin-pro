@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './login/register.component';
 import { PagesModule } from './pages/pages.module';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ServiceModule } from './services/service.module';
 
@@ -23,7 +23,8 @@ import { ServiceModule } from './services/service.module';
     ServiceModule,
 
     //Temp
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     
   ],
   providers: [],
