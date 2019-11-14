@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { UsuarioService } from '../services/service.index';
+import { Usuario } from '../models/usuario.model';
+import { Router } from '@angular/router';
+
 
 declare function init_plugins();
 
@@ -10,7 +15,10 @@ declare function init_plugins();
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  constructor() {}
+  constructor(
+    public _usuarioService: UsuarioService,
+    public router: Router
+  ) {}
 
   sonIguales(field1: string, field2: string) {
     return (group: FormGroup) => {
@@ -57,9 +65,24 @@ export class RegisterComponent implements OnInit {
       return;
     }
     if (!this.registerForm.value.conditions) {
-      console.log('debe de aceptar las condiciones');
+      // console.log('debe de aceptar las condiciones');
+      Swal.fire({
+        title: 'Importante!',
+        text: 'Debe de aceptar las condiciones',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      })
       return;
     }
-    console.warn(this.registerForm.value);
+    let usuario = new Usuario(this.registerForm.value.nombre, this.registerForm.value.email, this.registerForm.value.password);
+    this._usuarioService.crearUsuario(usuario).subscribe(
+      resp => {
+        this.router.navigate(['/login']);
+        console.log(resp);
+      }
+    );
+
+
+    // console.warn(this.registerForm.value);
   }
 }
