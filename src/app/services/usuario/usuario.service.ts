@@ -13,19 +13,32 @@ export class UsuarioService {
     console.log('Servicio de usuario listo');
   }
 
-  login(usuario: Usuario, recordar: boolean = false){
+  login(usuario: Usuario, recordar: boolean = false) {
     let url = URL_SERVICES + '/login';
-    return this.http.post(url, usuario);
 
+    if (recordar) {
+      localStorage.setItem('email', usuario.email);
+    } else {
+      localStorage.removeItem('email');
+    }
 
+    return this.http.post(url, usuario).pipe(
+      map((resp: any) => {
+        localStorage.setItem('id', resp.id);
+        localStorage.setItem('token', resp.token);
+        localStorage.setItem('usuario', JSON.stringify(resp.usuario));
+        return true;
+      })
+    );
   }
 
   crearUsuario(usuario: Usuario) {
     let url = `${URL_SERVICES}/usuario`;
-    return this.http.post(url, usuario)
-                        .pipe(map((resp: any) => {
-                          Swal.fire('Usuario Creado', usuario.email, 'success');
-                          return resp.usuario;
-                        }));
+    return this.http.post(url, usuario).pipe(
+      map((resp: any) => {
+        Swal.fire('Usuario Creado', usuario.email, 'success');
+        return resp.usuario;
+      })
+    );
   }
 }
